@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amritesh Menon - Online Resume</title>
-  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,28 +51,43 @@
           role: "Mechanical Design Engineer",
           period: "Jul 2024 - Present",
           location: "Atsugi, Japan",
-          description: "Designed and optimized jigs and fixtures to enhance assembly processes and improve manufacturing efficiency for Nissan's battery assembly line across Japan and North America. Implemented Poka-Yoke (mistake-proofing) solutions and conducted time studies to identify and eliminate bottlenecks."
+          tasks: [
+            "Designed and optimized jigs and fixtures to enhance assembly processes and improve manufacturing efficiency for Nissan's battery assembly line across Japan and North America ensuring alignment with project timelines and approved investment levels.",
+            "Designed Robot grippers and managed the integration of new equipments and features into existing robot gripper designs, ensuring minimal disruption to ongoing production.",
+            "Implemented Poka-Yoke (mistake-proofing) solutions and error-proofing mechanisms directly into jig and fixture designs and assembly processes to reduce defects.",
+            "Conducted time studies, cycle time analysis, and line balancing activities to identify and eliminate bottlenecks, significantly improving line efficiency.",
+            "Participated actively in Design for Manufacturability (DFM) and Design for Assembly (DFA) reviews, providing critical feedback to product design teams to optimize new product introduction.",
+            "Managed projects from conception to completion, ensuring delivery within agreed budget targets and effectively managing potential project risk costs."
+          ]
         },
         {
           company: "Macro Energy Ltd",
           role: "Mechanical Design Engineer",
           period: "Sep 2022 - May 2024",
           location: "Manchester, UK",
-          description: "Led the design and development of a complex seaweed harvester, managing over 900 individual components. Utilized SolidWorks and Fusion360 for detailed 3D models and technical drawings. Successfully reduced production costs by 20% through cost and efficiency analysis."
+          tasks: [
+            "Led the design and development of a complex seaweed harvester, managing over 900 individual components.",
+            "Utilized SolidWorks and Fusion360 for detailed 3D models and technical drawings.",
+            "Successfully reduced production costs by 20% through cost and efficiency analysis."
+          ]
         },
         {
           company: "Waitrose and Partners",
           role: "Supermarket Assistant - Night shift Keyholder",
           period: "Feb 2021 - Sep 2022",
           location: "Oxford, UK",
-          description: "In charge of 10 employees on average during night shifts, responsible for task flow prioritization and ensuring tasks are completed efficiently."
+          tasks: [
+            "In charge of 10 employees on average during night shifts, responsible for task flow prioritization and ensuring tasks are completed efficiently."
+          ]
         },
         {
           company: "Bajaj Allianz General Insurance",
           role: "Jr Service Engineer",
           period: "Jul 2019-Aug 2020",
           location: "Mumbai, India",
-          description: "Reduced turnaround time for two-wheeler motor claims and achieved third-highest position across the country in contexts of 'most online claims settled'."
+          tasks: [
+            "Reduced turnaround time for two-wheeler motor claims and achieved third-highest position across the country in contexts of 'most online claims settled'."
+          ]
         }
       ],
       education: [
@@ -109,8 +123,24 @@
             'MapPin': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M12 21.43a2.6 2.6 0 0 1-2.6-2.6c0-2.3 2.6-4.9 2.6-4.9s2.6 2.6 2.6 4.9a2.6 2.6 0 0 1-2.6 2.6z"></path><path d="M12 12a5 5 0 0 0 0-10c-2.76 0-5 2.24-5 5a5 5 0 0 0 5 5z"></path></svg>`,
             'Link': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.54-7.54l-3 3a5 5 0 0 0-1.78 4.2"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.54 7.54l3-3a5 5 0 0 0 1.78-4.2"></path></svg>`,
             'Trash2': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`,
+            'ChevronDown': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="6 9 12 15 18 9"></polyline></svg>`,
+            'ChevronUp': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="18 15 12 9 6 15"></polyline></svg>`
         };
         return icons[name] || '';
+    }
+
+    // Function to handle click to toggle visibility
+    function toggleDetails(event) {
+        const target = event.currentTarget;
+        const details = target.nextElementSibling;
+        const icon = target.querySelector('.toggle-icon');
+
+        details.classList.toggle('hidden');
+        if (details.classList.contains('hidden')) {
+            icon.innerHTML = getIconSVG('ChevronDown', 20, 'transition-transform duration-300');
+        } else {
+            icon.innerHTML = getIconSVG('ChevronUp', 20, 'transition-transform duration-300');
+        }
     }
 
     function createResumeHTML() {
@@ -143,12 +173,25 @@
       html += `<section class="mb-10">`;
       html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Briefcase', 24, 'text-teal-400')} Work Experience</h2>`;
       html += `<div class="space-y-6">`;
-      workExperience.forEach(job => {
-        html += `<div class="bg-gray-900 p-6 rounded-xl shadow-inner transition-transform transform hover:scale-[1.01]">`;
+      workExperience.forEach((job, index) => {
+        html += `<div class="bg-gray-900 rounded-xl shadow-inner transition-transform transform hover:scale-[1.01] overflow-hidden">`;
+        html += `<div class="p-6 cursor-pointer" onclick="toggleDetails(event)">`;
+        html += `<div class="flex justify-between items-center">`;
+        html += `<div>`;
         html += `<h3 class="text-xl font-bold text-white">${job.company}</h3>`;
         html += `<p class="text-md text-teal-400 font-semibold">${job.role}</p>`;
         html += `<p class="text-sm text-gray-400">${job.period} | ${job.location}</p>`;
-        html += `<p class="mt-2 text-gray-300">${job.description}</p>`;
+        html += `</div>`;
+        html += `<div class="toggle-icon text-gray-500 hover:text-teal-400">${getIconSVG('ChevronDown', 20, 'transition-transform duration-300')}</div>`;
+        html += `</div>`;
+        html += `</div>`;
+        html += `<div class="work-details hidden p-6 pt-0">`;
+        html += `<ul class="list-disc list-inside space-y-2 text-gray-300">`;
+        job.tasks.forEach(task => {
+            html += `<li>${task}</li>`;
+        });
+        html += `</ul>`;
+        html += `</div>`;
         html += `</div>`;
       });
       html += `</div>`;
