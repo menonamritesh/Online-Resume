@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amritesh Menon - Online Resume</title>
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +12,8 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f7fafc;
-      color: #1a202c;
+      background-color: #0d1222;
+      color: #e2e8f0;
     }
     .dark body {
       background-color: #1a202c;
@@ -117,37 +118,37 @@
       let html = '';
 
       // Wrapper
-      html += `<div class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50 font-sans p-4 sm:p-8 min-h-screen">`;
-      html += `<div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 shadow-xl rounded-2xl overflow-hidden p-6 sm:p-10 transition-all duration-300">`;
+      html += `<div class="bg-[#0D1222] text-gray-100 font-sans p-4 sm:p-8 min-h-screen">`;
+      html += `<div class="max-w-4xl mx-auto bg-gray-950 shadow-xl rounded-2xl overflow-hidden p-6 sm:p-10 transition-all duration-300">`;
 
       // Header Section
       html += `<header class="text-center mb-10">`;
-      html += `<h1 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-2">${personal.name}</h1>`;
-      html += `<p class="text-xl text-gray-600 dark:text-gray-300 font-medium">${personal.title}</p>`;
-      html += `<div class="flex justify-center items-center flex-wrap gap-4 mt-4 text-gray-500 dark:text-gray-400">`;
+      html += `<h1 class="text-4xl sm:text-5xl font-bold text-white mb-2">${personal.name}</h1>`;
+      html += `<p class="text-xl text-gray-400 font-medium">${personal.title}</p>`;
+      html += `<div class="flex justify-center items-center flex-wrap gap-4 mt-4 text-gray-500">`;
       html += `<span class="flex items-center gap-1">${getIconSVG('MapPin', 16)} ${personal.location}</span>`;
-      html += `<a href="mailto:${personal.email}" class="flex items-center gap-1 hover:text-blue-500 transition-colors">${getIconSVG('Mail', 16)} ${personal.email}</a>`;
-      html += `<a href="tel:${personal.phone}" class="flex items-center gap-1 hover:text-blue-500 transition-colors">${getIconSVG('Phone', 16)} ${personal.phone}</a>`;
-      html += `<a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-blue-500 transition-colors">${getIconSVG('Link', 16)} LinkedIn</a>`;
+      html += `<a href="mailto:${personal.email}" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Mail', 16)} ${personal.email}</a>`;
+      html += `<a href="tel:${personal.phone}" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Phone', 16)} ${personal.phone}</a>`;
+      html += `<a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Link', 16)} LinkedIn</a>`;
       html += `</div>`;
       html += `</header>`;
 
       // Summary Section
       html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-blue-500 pb-2 mb-4 flex items-center gap-2">${getIconSVG('FileText', 24, 'text-blue-500')} Summary</h2>`;
-      html += `<p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">${personal.summary}</p>`;
+      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('FileText', 24, 'text-teal-400')} Summary</h2>`;
+      html += `<p class="text-lg text-gray-300 leading-relaxed">${personal.summary}</p>`;
       html += `</section>`;
 
       // Work Experience Section
       html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-blue-500 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Briefcase', 24, 'text-blue-500')} Work Experience</h2>`;
+      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Briefcase', 24, 'text-teal-400')} Work Experience</h2>`;
       html += `<div class="space-y-6">`;
       workExperience.forEach(job => {
-        html += `<div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-xl shadow-inner transition-transform transform hover:scale-[1.01]">`;
-        html += `<h3 class="text-xl font-bold text-gray-900 dark:text-white">${job.company}</h3>`;
-        html += `<p class="text-md text-blue-600 dark:text-blue-400 font-semibold">${job.role}</p>`;
-        html += `<p class="text-sm text-gray-500 dark:text-gray-400">${job.period} | ${job.location}</p>`;
-        html += `<p class="mt-2 text-gray-700 dark:text-gray-200">${job.description}</p>`;
+        html += `<div class="bg-gray-900 p-6 rounded-xl shadow-inner transition-transform transform hover:scale-[1.01]">`;
+        html += `<h3 class="text-xl font-bold text-white">${job.company}</h3>`;
+        html += `<p class="text-md text-teal-400 font-semibold">${job.role}</p>`;
+        html += `<p class="text-sm text-gray-400">${job.period} | ${job.location}</p>`;
+        html += `<p class="mt-2 text-gray-300">${job.description}</p>`;
         html += `</div>`;
       });
       html += `</div>`;
@@ -155,13 +156,13 @@
 
       // Education Section
       html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-blue-500 pb-2 mb-4 flex items-center gap-2">${getIconSVG('GraduationCap', 24, 'text-blue-500')} Education</h2>`;
+      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('GraduationCap', 24, 'text-teal-400')} Education</h2>`;
       html += `<div class="space-y-4">`;
       education.forEach(edu => {
-        html += `<div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-xl transition-transform transform hover:scale-[1.01]">`;
-        html += `<h3 class="text-lg font-semibold text-gray-900 dark:text-white">${edu.institution}</h3>`;
-        html += `<p class="text-md text-gray-700 dark:text-gray-200">${edu.degree}</p>`;
-        html += `<p class="text-sm text-gray-500 dark:text-gray-400">${edu.location}</p>`;
+        html += `<div class="p-4 bg-gray-900 rounded-xl transition-transform transform hover:scale-[1.01]">`;
+        html += `<h3 class="text-lg font-semibold text-white">${edu.institution}</h3>`;
+        html += `<p class="text-md text-gray-300">${edu.degree}</p>`;
+        html += `<p class="text-sm text-gray-400">${edu.location}</p>`;
         html += `</div>`;
       });
       html += `</div>`;
@@ -169,18 +170,18 @@
 
       // Skills Section
       html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-blue-500 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Code', 24, 'text-blue-500')} Skills</h2>`;
+      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Code', 24, 'text-teal-400')} Skills</h2>`;
       html += `<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">`;
       
-      html += `<div><h3 class="text-xl font-bold mb-2">Technical</h3><ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200">`;
+      html += `<div><h3 class="text-xl font-bold mb-2">Technical</h3><ul class="list-disc list-inside space-y-1 text-gray-300">`;
       skills.technical.forEach(skill => html += `<li>${skill}</li>`);
       html += `</ul></div>`;
 
-      html += `<div><h3 class="text-xl font-bold mb-2">Analysis</h3><ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200">`;
+      html += `<div><h3 class="text-xl font-bold mb-2">Analysis</h3><ul class="list-disc list-inside space-y-1 text-gray-300">`;
       skills.analysis.forEach(skill => html += `<li>${skill}</li>`);
       html += `</ul></div>`;
 
-      html += `<div><h3 class="text-xl font-bold mb-2">Soft Skills</h3><ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-200">`;
+      html += `<div><h3 class="text-xl font-bold mb-2">Soft Skills</h3><ul class="list-disc list-inside space-y-1 text-gray-300">`;
       skills.softSkills.forEach(skill => html += `<li>${skill}</li>`);
       html += `</ul></div>`;
 
@@ -188,18 +189,18 @@
       
       // Call to Action
       html += `<div class="text-center">`;
-      html += `<button onclick="showModal()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">View Full Resume ${getIconSVG('ExternalLink', 18, 'ml-2')}</button>`;
+      html += `<button onclick="showModal()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-teal-500 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400 transition-colors duration-200">View Full Resume ${getIconSVG('ExternalLink', 18, 'ml-2')}</button>`;
       html += `</div>`;
 
       // Modal
       html += `<div id="modal-backdrop" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">`;
-      html += `<div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 max-w-lg w-full">`;
+      html += `<div class="bg-gray-800 rounded-lg shadow-xl p-8 max-w-lg w-full">`;
       html += `<div class="flex justify-between items-center mb-4">`;
-      html += `<h3 class="text-2xl font-bold text-gray-900 dark:text-white">View Full Resume</h3>`;
-      html += `<button onclick="hideModal()" class="text-gray-400 hover:text-gray-600">${getIconSVG('X', 24)}</button>`;
+      html += `<h3 class="text-2xl font-bold text-white">View Full Resume</h3>`;
+      html += `<button onclick="hideModal()" class="text-gray-400 hover:text-gray-200">${getIconSVG('X', 24)}</button>`;
       html += `</div>`;
-      html += `<p class="text-gray-700 dark:text-gray-200 mb-4">This feature is a placeholder. To make this functional, you would need to host your resume PDF on a service like Google Drive, Dropbox, or your own web server.</p>`;
-      html += `<p class="text-gray-700 dark:text-gray-200">Then, you would replace this modal with a link or an iframe pointing to the public URL of your PDF file.</p>`;
+      html += `<p class="text-gray-300 mb-4">This feature is a placeholder. To make this functional, you would need to host your resume PDF on a service like Google Drive, Dropbox, or your own web server.</p>`;
+      html += `<p class="text-gray-300">Then, you would replace this modal with a link or an iframe pointing to the public URL of your PDF file.</p>`;
       html += `</div></div>`;
 
       html += `</div></div>`;
