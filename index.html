@@ -27,6 +27,17 @@
         stroke-linecap: round;
         stroke-linejoin: round;
     }
+    .work-details {
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+    .work-details.open {
+      max-height: 500px; /* Adjust as needed */
+      opacity: 1;
+      padding-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -135,11 +146,11 @@
         const details = target.nextElementSibling;
         const icon = target.querySelector('.toggle-icon');
 
-        details.classList.toggle('hidden');
-        if (details.classList.contains('hidden')) {
-            icon.innerHTML = getIconSVG('ChevronDown', 20, 'transition-transform duration-300');
-        } else {
+        details.classList.toggle('open');
+        if (details.classList.contains('open')) {
             icon.innerHTML = getIconSVG('ChevronUp', 20, 'transition-transform duration-300');
+        } else {
+            icon.innerHTML = getIconSVG('ChevronDown', 20, 'transition-transform duration-300');
         }
     }
 
@@ -185,7 +196,7 @@
         html += `<div class="toggle-icon text-gray-500 hover:text-teal-400">${getIconSVG('ChevronDown', 20, 'transition-transform duration-300')}</div>`;
         html += `</div>`;
         html += `</div>`;
-        html += `<div class="work-details hidden p-6 pt-0">`;
+        html += `<div class="work-details p-6 pt-0">`;
         html += `<ul class="list-disc list-inside space-y-2 text-gray-300">`;
         job.tasks.forEach(task => {
             html += `<li>${task}</li>`;
