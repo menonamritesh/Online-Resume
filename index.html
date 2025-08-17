@@ -166,32 +166,6 @@
                 "**Impact:** Utilized advanced CAD skills to create detailed 3D models and technical drawings.",
                 "**Improvement:** Achieved a 20% reduction in estimated production costs through design optimization."
               ]
-            },
-            {
-              company: "Waitrose and Partners",
-              role: "Supermarket Assistant - Night shift Keyholder",
-              period: "Feb 2021 - Sep 2022",
-              location: "Oxford, UK",
-              tasks: [
-                "In charge of 10 employees on average during night shifts, responsible for task flow prioritization and ensuring tasks are completed efficiently."
-              ],
-              achievements: [
-                "**Responsibility:** Efficiently managed a team of 10 during night shifts, ensuring smooth operations.",
-                "**Skill:** Honed leadership and time-management skills in a fast-paced environment."
-              ]
-            },
-            {
-              company: "Bajaj Allianz General Insurance",
-              role: "Jr Service Engineer",
-              period: "Jul 2019-Aug 2020",
-              location: "Mumbai, India",
-              tasks: [
-                "Reduced turnaround time for two-wheeler motor claims and achieved third-highest position across the country in contexts of 'most online claims settled'."
-              ],
-              achievements: [
-                "**Result:** Significantly reduced the turnaround time for two-wheeler motor claims.",
-                "**Recognition:** Achieved the third-highest national ranking for online claim settlements."
-              ]
             }
           ],
           education: [
@@ -265,7 +239,7 @@
         function renderResume() {
             const container = document.getElementById('resume-container');
             container.innerHTML = `
-                <header class="text-center md:text-left mb-16" data-aos="fade-down" data-aos-duration="1000">
+                <header class="text-center md:text-left mb-8" data-aos="fade-down" data-aos-duration="1000">
                     <h1 class="text-5xl md:text-6xl font-bold text-accent-color leading-tight">${resumeData.personal.name}</h1>
                     <p class="text-2xl font-normal text-gray-600 mt-2" data-aos="fade-down" data-aos-delay="200" data-aos-duration="1000">${resumeData.personal.title}</p>
                     <div class="flex flex-col md:flex-row items-center md:items-start md:justify-center lg:justify-start gap-6 mt-6 text-gray-500" data-aos="fade-down" data-aos-delay="400" data-aos-duration="1000">
@@ -287,18 +261,18 @@
                         </div>
                     </div>
                 </header>
-
-                <main class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                
+                <main class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12">
                     <!-- Left Column -->
                     <div class="md:col-span-1 space-y-12">
                         <!-- About Me Section -->
-                        <section class="premium-card" data-aos="fade-up" data-aos-duration="1000">
+                        <section id="about-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
                             <h2 class="text-3xl font-bold text-accent-color mb-6">About Me</h2>
                             <p class="text-gray-600 leading-relaxed">${resumeData.personal.summary}</p>
                         </section>
 
                         <!-- Education Section -->
-                        <section class="premium-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                        <section id="education-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                             <h2 class="text-3xl font-bold text-accent-color mb-6">Education</h2>
                             ${resumeData.education.map((edu, index) => `
                                 <div class="mb-4" data-aos="fade-up" data-aos-delay="${400 + index * 100}">
@@ -310,7 +284,7 @@
                         </section>
 
                         <!-- Skills Section -->
-                        <section class="premium-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                        <section id="skills-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                             <h2 class="text-3xl font-bold text-accent-color mb-6">Skills</h2>
                             <div class="space-y-6">
                                 <div data-aos="fade-up" data-aos-delay="500">
@@ -338,7 +312,7 @@
                     <!-- Right Column -->
                     <div class="md:col-span-2 space-y-12">
                         <!-- Work Experience Section -->
-                        <section class="premium-card" data-aos="fade-left" data-aos-duration="1000">
+                        <section id="work-section" class="premium-card" data-aos="fade-left" data-aos-duration="1000">
                             <h2 class="text-3xl font-bold text-accent-color mb-6">Work Experience</h2>
                             <div class="space-y-8">
                                 ${resumeData.workExperience.map((job, index) => `
@@ -371,7 +345,7 @@
                         </section>
                         
                         <!-- Portfolio Section -->
-                        <section class="premium-card" data-aos="fade-right" data-aos-duration="1000">
+                        <section id="portfolio-section" class="premium-card" data-aos="fade-right" data-aos-duration="1000">
                             <h2 class="text-3xl font-bold text-accent-color mb-6">Portfolio</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 ${resumeData.portfolio.map(item => `
@@ -430,12 +404,11 @@
             if (modal) modal.remove();
         }
 
-        // Initialize AOS library
         window.onload = function() {
             renderResume();
             AOS.init({
-                once: true, // Only animate once on scroll down
-                duration: 1000 // Set a default duration for all animations
+                once: true,
+                duration: 1000
             });
         };
     </script>
