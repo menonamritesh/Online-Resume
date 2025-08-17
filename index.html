@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amritesh Menon - Online Resume</title>
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,6 +155,14 @@
         }
     }
 
+    function showModal() {
+        document.getElementById('modal-backdrop').classList.remove('hidden');
+    }
+
+    function hideModal() {
+        document.getElementById('modal-backdrop').classList.add('hidden');
+    }
+
     function createResumeHTML() {
       const { personal, workExperience, education, skills } = resumeData;
       let html = '';
@@ -170,6 +179,7 @@
       html += `<span class="flex items-center gap-1">${getIconSVG('MapPin', 16)} ${personal.location}</span>`;
       html += `<a href="mailto:${personal.email}" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Mail', 16)} ${personal.email}</a>`;
       html += `<a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Link', 16)} LinkedIn</a>`;
+      html += `<button onclick="showModal()" class="flex items-center gap-1 text-gray-500 hover:text-teal-400 transition-colors">${getIconSVG('Phone', 16)} Contact Me</button>`;
       html += `</div>`;
       html += `</header>`;
 
@@ -249,26 +259,18 @@
       html += `<div id="modal-backdrop" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">`;
       html += `<div class="bg-gray-800 rounded-lg shadow-xl p-8 max-w-lg w-full">`;
       html += `<div class="flex justify-between items-center mb-4">`;
-      html += `<h3 class="text-2xl font-bold text-white">View Full Resume</h3>`;
+      html += `<h3 class="text-2xl font-bold text-white">Let's Connect</h3>`;
       html += `<button onclick="hideModal()" class="text-gray-400 hover:text-gray-200">${getIconSVG('X', 24)}</button>`;
       html += `</div>`;
-      html += `<p class="text-gray-300 mb-4">This feature is a placeholder. To make this functional, you would need to host your resume PDF on a service like Google Drive, Dropbox, or your own web server.</p>`;
-      html += `<p class="text-gray-300">Then, you would replace this modal with a link or an iframe pointing to the public URL of your PDF file.</p>`;
+      html += `<p class="text-gray-300 mb-4">Please connect with me on LinkedIn to get in touch. You can find my profile link on this page.</p>`;
+      html += `<a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">Go to LinkedIn ${getIconSVG('ExternalLink', 18, 'ml-2')}</a>`;
       html += `</div></div>`;
-
+      
       html += `</div></div>`;
 
       document.getElementById('resume-container').innerHTML = html;
     }
-
-    function showModal() {
-        document.getElementById('modal-backdrop').classList.remove('hidden');
-    }
-
-    function hideModal() {
-        document.getElementById('modal-backdrop').classList.add('hidden');
-    }
-
+    
     document.addEventListener('DOMContentLoaded', createResumeHTML);
 
   </script>
