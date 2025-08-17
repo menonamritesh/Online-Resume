@@ -1,279 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amritesh Menon - Online Resume</title>
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0d1222;
-      color: #e2e8f0;
-    }
-    .dark body {
-      background-color: #1a202c;
-      color: #e2e8f0;
-    }
-    .lucide-icon {
-        display: inline-block;
-        vertical-align: middle;
-        stroke-width: 2;
-        stroke: currentColor;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-    }
-    .work-details {
-      transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out;
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-    }
-    .work-details.open {
-      max-height: 500px; /* Adjust as needed */
-      opacity: 1;
-      padding-top: 1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amritesh Menon - Online Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1222;
+            color: #e2e8f0;
+        }
+
+        /* Custom styling for icons to work with Tailwind */
+        .lucide-icon {
+            display: inline-block;
+            vertical-align: middle;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Styles for the collapsable work experience details */
+        .work-details {
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s ease-out;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        /* Class to open the details section */
+        .work-details.open {
+            max-height: 500px; /* Adjust as needed for content length */
+            opacity: 1;
+            padding-top: 1rem;
+        }
+        
+        /* Styles for achievement list items */
+        .achievement {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #14b8a6;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.9em;
+            color: #cbd5e0;
+        }
+
+        /* Styles for portfolio item cards */
+        .portfolio-item {
+            border: 1px solid #4a5568;
+            border-radius: 0.375rem;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            border-color: #14b8a6;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-[#0d1222] text-[#e2e8f0]">
 
-  <div id="resume-container" class="min-h-screen"></div>
+    <div id="resume-container" class="max-w-7xl mx-auto p-4 md:p-8"></div>
 
-  <script>
-    // Resume Data
-    const resumeData = {
-      personal: {
-        name: "Amritesh Menon",
-        title: "Results-oriented Engineer",
-        location: "Atsugi, JP",
-        phone: "+817091763550",
-        email: "menonamritesh@gmail.com",
-        linkedin: "https://www.linkedin.com/in/menonamritesh",
-        summary: "A results-oriented Engineer with a proven track record of success in product development and automotive assembly lines, within the UK and Japan. Seeking to leverage my proven ability to lead projects from concept to production, excel in fast-paced environments, and collaborate effectively within diverse teams."
-      },
-      workExperience: [
-        {
-          company: "Nissan Motors Ltd",
-          role: "Mechanical Design Engineer",
-          period: "Jul 2024 - Present",
-          location: "Atsugi, Japan",
-          tasks: [
-            "Designed and optimized jigs and fixtures to enhance assembly processes and improve manufacturing efficiency for Nissan's battery assembly line across Japan and North America ensuring alignment with project timelines and approved investment levels.",
-            "Designed Robot grippers and managed the integration of new equipments and features into existing robot gripper designs, ensuring minimal disruption to ongoing production.",
-            "Implemented Poka-Yoke (mistake-proofing) solutions and error-proofing mechanisms directly into jig and fixture designs and assembly processes to reduce defects.",
-            "Conducted time studies, cycle time analysis, and line balancing activities to identify and eliminate bottlenecks, significantly improving line efficiency.",
-            "Participated actively in Design for Manufacturability (DFM) and Design for Assembly (DFA) reviews, providing critical feedback to product design teams to optimize new product introduction.",
-            "Managed projects from conception to completion, ensuring delivery within agreed budget targets and effectively managing potential project risk costs."
+    <script>
+        // Resume Data
+        const resumeData = {
+          personal: {
+            name: "Amritesh Menon",
+            title: "Results-oriented Engineer",
+            location: "Isehara, Kanagawa, Japan",
+            email: "menonamritesh@gmail.com",
+            linkedin: "https://www.linkedin.com/in/menonamritesh",
+            github: "https://github.com/yourgithub", // Example GitHub link
+            summary: "A highly motivated and results-oriented engineer based in Isehara, Japan, with a proven track record in mechanical design and process optimization within the automotive industry. Expertise in CAD software, project management, and implementing efficiency improvements. Passionate about innovation and continuous learning.",
+            about: "Driven by a desire to solve complex engineering challenges and contribute to cutting-edge technologies. Thrives in collaborative environments and is committed to delivering high-quality results. Enjoys staying updated with the latest industry trends and exploring new design methodologies."
+          },
+          workExperience: [
+            {
+              company: "Nissan Motors Ltd",
+              role: "Mechanical Design Engineer",
+              period: "Jul 2024 - Present",
+              location: "Atsugi, Japan",
+              tasks: [
+                "Designed and optimized jigs and fixtures to enhance assembly processes and improve manufacturing efficiency for Nissan's battery assembly line across Japan and North America ensuring alignment with project timelines and approved investment levels.",
+                "Designed Robot grippers and managed the integration of new equipments and features into existing robot gripper designs, ensuring minimal disruption to ongoing production.",
+                "Implemented Poka-Yoke (mistake-proofing) solutions and error-proofing mechanisms directly into jig and fixture designs and assembly processes to reduce defects.",
+                "Conducted time studies, cycle time analysis, and line balancing activities to identify and eliminate bottlenecks, significantly improving line efficiency."
+              ],
+              achievements: [
+                "**Result:** Successfully optimized jig designs, contributing to a 15% reduction in assembly time.",
+                "**Impact:** Implemented Poka-Yoke solutions that decreased defect rates by 10% in the battery assembly line.",
+                "**Improvement:** Identified and eliminated bottlenecks, leading to a 5% increase in overall line efficiency."
+              ]
+            },
+            {
+              company: "Macro Energy Ltd",
+              role: "Mechanical Design Engineer",
+              period: "Sep 2022 - May 2024",
+              location: "Manchester, UK",
+              tasks: [
+                "Led the design and development of a complex seaweed harvester, managing over 900 individual components.",
+                "Utilized SolidWorks and Fusion360 for detailed 3D models and technical drawings.",
+                "Successfully reduced production costs by 20% through cost and efficiency analysis."
+              ],
+              achievements: [
+                "**Result:** Led the design of a novel seaweed harvester comprising over 900 parts.",
+                "**Impact:** Utilized advanced CAD skills to create detailed 3D models and technical drawings.",
+                "**Improvement:** Achieved a 20% reduction in estimated production costs through design optimization."
+              ]
+            },
+            {
+              company: "Waitrose and Partners",
+              role: "Supermarket Assistant - Night shift Keyholder",
+              period: "Feb 2021 - Sep 2022",
+              location: "Oxford, UK",
+              tasks: [
+                "In charge of 10 employees on average during night shifts, responsible for task flow prioritization and ensuring tasks are completed efficiently."
+              ],
+              achievements: [
+                "**Responsibility:** Efficiently managed a team of 10 during night shifts, ensuring smooth operations.",
+                "**Skill:** Honed leadership and time-management skills in a fast-paced environment."
+              ]
+            },
+            {
+              company: "Bajaj Allianz General Insurance",
+              role: "Jr Service Engineer",
+              period: "Jul 2019-Aug 2020",
+              location: "Mumbai, India",
+              tasks: [
+                "Reduced turnaround time for two-wheeler motor claims and achieved third-highest position across the country in contexts of 'most online claims settled'."
+              ],
+              achievements: [
+                "**Result:** Significantly reduced the turnaround time for two-wheeler motor claims.",
+                "**Recognition:** Achieved the third-highest national ranking for online claim settlements."
+              ]
+            }
+          ],
+          education: [
+            {
+              institution: "Oxford Brookes University",
+              degree: "MSc in Automotive Engineering with Electric Vehicles",
+              location: "Oxford, UK"
+            },
+            {
+              institution: "University of Mumbai",
+              degree: "Bachelors in Automotive Engineering",
+              location: "Mumbai, India"
+            }
+          ],
+          skills: {
+            technical: ["3D CAD (NX)", "3D CAD (SolidWorks)", "3D CAD (Fusion360)", "3D CAD (CATIA V5)", "Teamcenter", "FEA", "GD&T", "Rapid Prototyping"],
+            analysis: ["DFM", "FMEA", "Data Analysis", "Data Visualization"],
+            softSkills: ["Leadership", "Teamwork", "Problem-solving", "Project management", "Adaptability", "Communication"]
+          },
+          portfolio: [
+            {
+              title: "Battery Assembly Line Optimization",
+              description: "Led the design and implementation of optimized jigs and fixtures for Nissan's battery assembly line.",
+              image: "https://placehold.co/600x400/1e293b/cbd5e0?text=Project+Image+1",
+              details: "Utilized NX CAD to design ergonomic and efficient fixtures, resulting in a measurable reduction in cycle time and improved operator safety. Collaborated with cross-functional teams to ensure seamless integration into the existing production line."
+            },
+            {
+              title: "Seaweed Harvester Design",
+              description: "Conceptualized and designed a complex seaweed harvester with over 900 individual components.",
+              image: "https://placehold.co/600x400/1e293b/cbd5e0?text=Project+Image+2",
+              details: "Employed SolidWorks and Fusion360 for the complete design process, from initial sketches to detailed 3D models and technical drawings. Conducted FEA to validate structural integrity and optimize material usage."
+            }
           ]
-        },
-        {
-          company: "Macro Energy Ltd",
-          role: "Mechanical Design Engineer",
-          period: "Sep 2022 - May 2024",
-          location: "Manchester, UK",
-          tasks: [
-            "Led the design and development of a complex seaweed harvester, managing over 900 individual components.",
-            "Utilized SolidWorks and Fusion360 for detailed 3D models and technical drawings.",
-            "Successfully reduced production costs by 20% through cost and efficiency analysis."
-          ]
-        },
-        {
-          company: "Waitrose and Partners",
-          role: "Supermarket Assistant - Night shift Keyholder",
-          period: "Feb 2021 - Sep 2022",
-          location: "Oxford, UK",
-          tasks: [
-            "In charge of 10 employees on average during night shifts, responsible for task flow prioritization and ensuring tasks are completed efficiently."
-          ]
-        },
-        {
-          company: "Bajaj Allianz General Insurance",
-          role: "Jr Service Engineer",
-          period: "Jul 2019-Aug 2020",
-          location: "Mumbai, India",
-          tasks: [
-            "Reduced turnaround time for two-wheeler motor claims and achieved third-highest position across the country in contexts of 'most online claims settled'."
-          ]
-        }
-      ],
-      education: [
-        {
-          institution: "Oxford Brookes University",
-          degree: "MSc in Automotive Engineering with Electric Vehicles",
-          location: "Oxford, UK"
-        },
-        {
-          institution: "University of Mumbai",
-          degree: "Bachelors in Automotive Engineering",
-          location: "Mumbai, India"
-        }
-      ],
-      skills: {
-        technical: ["3D CAD (NX, SolidWorks, Fusion360, CATIA V5)", "Teamcenter", "FEA", "GD&T", "Rapid Prototyping"],
-        analysis: ["DFM", "FMEA", "Data Analysis and Visualization"],
-        softSkills: ["Leadership", "Teamwork", "Problem-solving", "Project management", "Adaptability"]
-      }
-    };
-
-    // Helper function to create SVG icons
-    function getIconSVG(name, size = 24, className = "") {
-        const icons = {
-            'Briefcase': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
-            'GraduationCap': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M21.43 12.28a1.2 1.2 0 0 0-.2-2.12L15 7.15c-1.34-1.28-3.41-1.28-4.75 0L3 10.16a1.2 1.2 0 0 0-.2 2.12l8.72 2.62c1.34.4 2.7.4 4.04 0l6.98-2.62a1.2 1.2 0 0 0 .2-2.12zM12 21.43a1.2 1.2 0 0 0-.2-2.12l-8.72-2.62a1.2 1.2 0 0 0-.2-2.12l6.98-2.62c1.34-.4 2.7-.4 4.04 0l6.98 2.62a1.2 1.2 0 0 0 .2 2.12l-8.72 2.62a1.2 1.2 0 0 0-.2 2.12l-2.62-8.72z"></path></svg>`,
-            'Code': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
-            'FileText': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>`,
-            'ExternalLink': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>`,
-            'X': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M18 6L6 18"></path><path d="M6 6L18 18"></path></svg>`,
-            'Mail': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6L12 13 2 6"></path></svg>`,
-            'Phone': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M22 16.92v3a2 2 0 0 1-2.18 2h-11a2 2 0 0 1-2-2.18L5.7 14.88a2 2 0 0 1 .43-2.65l1.5-1.5a2 2 0 0 1 2.65-.43l3.52 1.35a2 2 0 0 1 .43 2.65z"></path></svg>`,
-            'MapPin': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M12 21.43a2.6 2.6 0 0 1-2.6-2.6c0-2.3 2.6-4.9 2.6-4.9s2.6 2.6 2.6 4.9a2.6 2.6 0 0 1-2.6 2.6z"></path><path d="M12 12a5 5 0 0 0 0-10c-2.76 0-5 2.24-5 5a5 5 0 0 0 5 5z"></path></svg>`,
-            'Link': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.54-7.54l-3 3a5 5 0 0 0-1.78 4.2"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.54 7.54l3-3a5 5 0 0 0 1.78-4.2"></path></svg>`,
-            'Trash2': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>`,
-            'ChevronDown': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="6 9 12 15 18 9"></polyline></svg>`,
-            'ChevronUp': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="18 15 12 9 6 15"></polyline></svg>`
         };
-        return icons[name] || '';
-    }
 
-    // Function to handle click to toggle visibility
-    function toggleDetails(event) {
-        const target = event.currentTarget;
-        const details = target.nextElementSibling;
-        const icon = target.querySelector('.toggle-icon');
-
-        details.classList.toggle('open');
-        if (details.classList.contains('open')) {
-            icon.innerHTML = getIconSVG('ChevronUp', 20, 'transition-transform duration-300');
-        } else {
-            icon.innerHTML = getIconSVG('ChevronDown', 20, 'transition-transform duration-300');
+        // Helper function to create SVG icons
+        function getIconSVG(name, size = 24, className = "") {
+            const icons = {
+                'Briefcase': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>`,
+                'GraduationCap': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M21.43 12.28a1.2 1.2 0 0 0-.2-2.12L15 7.15c-1.34-1.28-3.41-1.28-4.75 0L3 10.16a1.2 1.2 0 0 0-.2 2.12l8.72 2.62c1.34.4 2.7.4 4.04 0l6.98-2.62a1.2 1.2 0 0 0 .2-2.12zM12 21.43a1.2 1.2 0 0 0-.2-2.12l-8.72-2.62a1.2 1.2 0 0 0-.2-2.12l6.98-2.62c1.34-.4 2.7-.4 4.04 0l6.98 2.62a1.2 1.2 0 0 0 .2 2.12l-8.72 2.62a1.2 1.2 0 0 0-.2 2.12l-2.62-8.72z"></path></svg>`,
+                'Code': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+                'FileText': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>`,
+                'ExternalLink': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M15 3h6v6"></path><path d="M10 14L21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>`,
+                'X': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M18 6L6 18"></path><path d="M6 6L18 18"></path></svg>`,
+                'Mail': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6L12 13 2 6"></path></svg>`,
+                'Phone': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M22 16.92v3a2 2 0 0 1-2.18 2h-11a2 2 0 0 1-2-2.18L5.7 14.88a2 2 0 0 1 .43-2.65l1.5-1.5a2 2 0 0 1 2.65-.43l3.52 1.35a2 2 0 0 1 .43 2.65z"></path></svg>`,
+                'MapPin': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M12 21.43a2.6 2.6 0 0 1-2.6-2.6c0-2.3 2.6-4.9 2.6-4.9s2.6 2.6 2.6 4.9a2.6 2.6 0 0 1-2.6 2.6z"></path><path d="M12 12a5 5 0 0 0 0-10c-2.76 0-5 2.24-5 5a5 5 0 0 0 5 5z"></path></svg>`,
+                'Link': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.54-7.54l-3 3a5 5 0 0 0-1.78 4.2"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.54 7.54l3-3a5 5 0 0 0 1.78-4.2"></path></svg>`,
+                'Github': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.8c0-.6-.4-1-1-1-.9 0-1.4.6-2 1.5-1 1-1.4 1.5-2 1.5-2.2 0-3-.5-4-2-1.2-1.5-3.5-2-4.5-2s-1.5.5-2.5 1.5c-.8 1-1.2 1.5-2 1.5-.7 0-1-.3-1.5-.8-1-1-2-1.5-3-1.5s-2 .5-2 1.5c0 .7.3 1.2.8 1.5 1 .3 2.5 1.2 4.5 1.7.5.1 1 .2 1.5.2.5 0 1-.1 1.5-.2 2-.5 3-1.2 3.5-1.7.5-.1 1-.2 1.5-.2 1.2 0 1.5.5 1.5 1.2.5.5 1 .8 1.5.8h.5c.5 0 1 .3 1.5.8 1 1 2 1.5 3 1.5s2-.5 2-1.5c0-.7-.3-1.2-.8-1.5-1-.3-2.5-1.2-4.5-1.7-.5-.1-1-.2-1.5-.2-.5 0-1 .1-1.5.2-2 .5-3 1.2-3.5 1.7-.5.1-1 .2-1.5.2-1.2 0-1.5-.5-1.5-1.2-.5-.5-1-.8-1.5-.8h-.5c-.5 0-1-.3-1.5-.8-1-1-2-1.5-3-1.5s-2 .5-2 1.5c0 .7.3 1.2.8 1.5 1 .3 2.5 1.2 4.5 1.7.5.1 1 .2 1.5.2.5 0 1-.1 1.5-.2 2-.5 3-1.2 3.5-1.7.5-.1 1-.2 1.5-.2 1.2 0 1.5.5 1.5 1.2.5.5 1 .8 1.5.8h.5c.5 0 1-.3 1.5-.8-1-1-2-1.5-3-1.5s-2 .5-2 1.5c0 .7.3 1.2.8 1.5 1 .3 2.5 1.2 4.5 1.7.5.1 1 .2 1.5.2.5 0 1-.1 1.5-.2 2-.5 3-1.2 3.5-1.7.5-.1 1-.2 1.5-.2 1.2 0 1.5.5 1.5 1.2.5.5 1 .8 1.5.8h.5c.5 0 1-.3 1.5-.8z"></path></svg>`,
+                'Linkedin': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M16 8a6 6 0 0 0-6 6v7H6v-14h4v2.5a4 4 0 0 1 4-2.5c2.2 0 4 1.8 4 4z"></path><path d="M2.9 8.5V21h4V8.5h-4z"></path><circle cx="4.9" cy="4.9" r="2.1"></circle></svg>`,
+            };
+            return icons[name] || '';
         }
-    }
 
-    function showModal() {
-        document.getElementById('modal-backdrop').classList.remove('hidden');
-    }
+        // Main rendering function
+        function renderResume() {
+            const container = document.getElementById('resume-container');
+            container.innerHTML = `
+                <header class="text-center md:text-left mb-10 p-4 bg-gray-900 rounded-lg shadow-xl border border-gray-700">
+                    <h1 class="text-4xl md:text-5xl font-bold text-teal-400 mb-2">${resumeData.personal.name}</h1>
+                    <p class="text-xl md:text-2xl font-semibold text-gray-300 mb-4">${resumeData.personal.title}</p>
+                    <div class="flex flex-col md:flex-row items-center md:items-start md:justify-center lg:justify-start gap-3 flex-wrap text-gray-400">
+                        <div class="flex items-center gap-2">
+                            ${getIconSVG('MapPin', 20, 'text-gray-400')}
+                            <span>${resumeData.personal.location}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            ${getIconSVG('Mail', 20, 'text-gray-400')}
+                            <a href="mailto:${resumeData.personal.email}" class="hover:underline">${resumeData.personal.email}</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            ${getIconSVG('Linkedin', 20, 'text-gray-400')}
+                            <a href="${resumeData.personal.linkedin}" target="_blank" class="hover:underline">LinkedIn</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            ${getIconSVG('Github', 20, 'text-gray-400')}
+                            <a href="${resumeData.personal.github}" target="_blank" class="hover:underline">GitHub</a>
+                        </div>
+                    </div>
+                </header>
 
-    function hideModal() {
-        document.getElementById('modal-backdrop').classList.add('hidden');
-    }
+                <main class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Left Column (Personal Info & Skills) -->
+                    <div class="md:col-span-1 space-y-8">
+                        <!-- About Me Section -->
+                        <section class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700">
+                            <h2 class="text-2xl font-bold text-teal-400 mb-4">About Me</h2>
+                            <p class="text-gray-300">${resumeData.personal.summary}</p>
+                        </section>
 
-    function createResumeHTML() {
-      const { personal, workExperience, education, skills } = resumeData;
-      let html = '';
+                        <!-- Education Section -->
+                        <section class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700">
+                            <h2 class="text-2xl font-bold text-teal-400 mb-4">Education</h2>
+                            ${resumeData.education.map(edu => `
+                                <div class="mb-4">
+                                    <h3 class="text-lg font-semibold text-gray-200">${edu.institution}</h3>
+                                    <p class="text-gray-400">${edu.degree}</p>
+                                    <p class="text-sm text-gray-500">${edu.location}</p>
+                                </div>
+                            `).join('')}
+                        </section>
 
-      // Wrapper
-      html += `<div class="bg-[#0D1222] text-gray-100 font-sans p-4 sm:p-8 min-h-screen">`;
-      html += `<div class="max-w-4xl mx-auto bg-gray-950 shadow-xl rounded-2xl overflow-hidden p-6 sm:p-10 transition-all duration-300">`;
+                        <!-- Skills Section -->
+                        <section class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700">
+                            <h2 class="text-2xl font-bold text-teal-400 mb-4">Skills</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <h3 class="font-semibold text-gray-300">Technical Skills</h3>
+                                    <ul class="flex flex-wrap gap-2 mt-2">
+                                        ${resumeData.skills.technical.map(skill => `<li class="bg-gray-700 text-gray-200 text-sm py-1 px-3 rounded-full">${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-300">Analysis & Tools</h3>
+                                    <ul class="flex flex-wrap gap-2 mt-2">
+                                        ${resumeData.skills.analysis.map(skill => `<li class="bg-gray-700 text-gray-200 text-sm py-1 px-3 rounded-full">${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-300">Soft Skills</h3>
+                                    <ul class="flex flex-wrap gap-2 mt-2">
+                                        ${resumeData.skills.softSkills.map(skill => `<li class="bg-gray-700 text-gray-200 text-sm py-1 px-3 rounded-full">${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
 
-      // Header Section
-      html += `<header class="text-center mb-10">`;
-      html += `<h1 class="text-4xl sm:text-5xl font-bold text-white mb-2">${personal.name}</h1>`;
-      html += `<p class="text-xl text-gray-400 font-medium">${personal.title}</p>`;
-      html += `<div class="flex justify-center items-center flex-wrap gap-4 mt-4 text-gray-500">`;
-      html += `<span class="flex items-center gap-1">${getIconSVG('MapPin', 16)} ${personal.location}</span>`;
-      html += `<a href="mailto:${personal.email}" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Mail', 16)} ${personal.email}</a>`;
-      html += `<a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 hover:text-teal-400 transition-colors">${getIconSVG('Link', 16)} LinkedIn</a>`;
-      html += `<button onclick="showModal()" class="flex items-center gap-1 text-gray-500 hover:text-teal-400 transition-colors">${getIconSVG('Phone', 16)} Contact Me</button>`;
-      html += `</div>`;
-      html += `</header>`;
+                    <!-- Right Column (Experience & Portfolio) -->
+                    <div class="md:col-span-2 space-y-8">
+                        <!-- Work Experience Section -->
+                        <section class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700">
+                            <h2 class="text-2xl font-bold text-teal-400 mb-4">Work Experience</h2>
+                            <div class="space-y-6">
+                                ${resumeData.workExperience.map((job, index) => `
+                                    <div class="border-b border-gray-700 pb-4 last:border-b-0">
+                                        <div class="flex items-start justify-between">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-gray-200">${job.role} at ${job.company}</h3>
+                                                <p class="text-gray-400 text-sm">${job.period} &bull; ${job.location}</p>
+                                            </div>
+                                            <button onclick="toggleDetails(${index})" class="flex items-center text-teal-400 hover:text-teal-300 transition-colors duration-200">
+                                                <span class="text-sm font-medium toggle-text">Show Details</span>
+                                                ${getIconSVG('FileText', 20, 'lucide-icon ml-1 transform transition-transform duration-300')}
+                                            </button>
+                                        </div>
+                                        <div id="job-details-${index}" class="work-details">
+                                            <ul class="list-disc list-inside space-y-2 text-gray-300 mt-2">
+                                                ${job.tasks.map(task => `<li>${task}</li>`).join('')}
+                                            </ul>
+                                            ${job.achievements.length > 0 ? `
+                                                <div class="mt-4">
+                                                    <h4 class="font-semibold text-gray-300">Key Achievements:</h4>
+                                                    <ul class="space-y-2 mt-2">
+                                                        ${job.achievements.map(achievement => `<li class="achievement">${achievement}</li>`).join('')}
+                                                    </ul>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </section>
+                        
+                        <!-- Portfolio Section -->
+                        <section class="p-6 bg-gray-900 rounded-lg shadow-xl border border-gray-700">
+                            <h2 class="text-2xl font-bold text-teal-400 mb-4">Portfolio</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                ${resumeData.portfolio.map(item => `
+                                    <div class="portfolio-item bg-gray-800 rounded-lg shadow-md">
+                                        <img src="${item.image}" alt="Portfolio item image" class="w-full h-48 object-cover rounded-t-lg">
+                                        <div class="p-4">
+                                            <h3 class="text-xl font-semibold text-gray-200 mb-2">${item.title}</h3>
+                                            <p class="text-gray-400 text-sm mb-3">${item.description}</p>
+                                            <p class="text-gray-300 text-sm">${item.details}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </section>
+                    </div>
+                </main>
+            `;
+        }
+        
+        // Function to toggle the visibility of work details
+        function toggleDetails(index) {
+            const detailsElement = document.getElementById(`job-details-${index}`);
+            const buttonTextElement = detailsElement.previousElementSibling.querySelector('.toggle-text');
+            const buttonIconElement = detailsElement.previousElementSibling.querySelector('.lucide-icon');
+            
+            detailsElement.classList.toggle('open');
 
-      // Summary Section
-      html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('FileText', 24, 'text-teal-400')} Summary</h2>`;
-      html += `<p class="text-lg text-gray-300 leading-relaxed">${personal.summary}</p>`;
-      html += `</section>`;
+            if (detailsElement.classList.contains('open')) {
+                buttonTextElement.textContent = "Hide Details";
+                buttonIconElement.style.transform = "rotate(180deg)";
+            } else {
+                buttonTextElement.textContent = "Show Details";
+                buttonIconElement.style.transform = "rotate(0deg)";
+            }
+        }
 
-      // Work Experience Section
-      html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Briefcase', 24, 'text-teal-400')} Work Experience</h2>`;
-      html += `<div class="space-y-6">`;
-      workExperience.forEach((job, index) => {
-        html += `<div class="bg-gray-900 rounded-xl shadow-inner transition-transform transform hover:scale-[1.01] overflow-hidden">`;
-        html += `<div class="p-6 cursor-pointer" onclick="toggleDetails(event)">`;
-        html += `<div class="flex justify-between items-center">`;
-        html += `<div>`;
-        html += `<h3 class="text-xl font-bold text-white">${job.company}</h3>`;
-        html += `<p class="text-md text-teal-400 font-semibold">${job.role}</p>`;
-        html += `<p class="text-sm text-gray-400">${job.period} | ${job.location}</p>`;
-        html += `</div>`;
-        html += `<div class="toggle-icon text-gray-500 hover:text-teal-400">${getIconSVG('ChevronDown', 20, 'transition-transform duration-300')}</div>`;
-        html += `</div>`;
-        html += `</div>`;
-        html += `<div class="work-details p-6 pt-0">`;
-        html += `<ul class="list-disc list-inside space-y-2 text-gray-300">`;
-        job.tasks.forEach(task => {
-            html += `<li>${task}</li>`;
-        });
-        html += `</ul>`;
-        html += `</div>`;
-        html += `</div>`;
-      });
-      html += `</div>`;
-      html += `</section>`;
-
-      // Education Section
-      html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('GraduationCap', 24, 'text-teal-400')} Education</h2>`;
-      html += `<div class="space-y-4">`;
-      education.forEach(edu => {
-        html += `<div class="p-4 bg-gray-900 rounded-xl transition-transform transform hover:scale-[1.01]">`;
-        html += `<h3 class="text-lg font-semibold text-white">${edu.institution}</h3>`;
-        html += `<p class="text-md text-gray-300">${edu.degree}</p>`;
-        html += `<p class="text-sm text-gray-400">${edu.location}</p>`;
-        html += `</div>`;
-      });
-      html += `</div>`;
-      html += `</section>`;
-
-      // Skills Section
-      html += `<section class="mb-10">`;
-      html += `<h2 class="text-2xl sm:text-3xl font-semibold border-b-2 border-teal-400 pb-2 mb-4 flex items-center gap-2">${getIconSVG('Code', 24, 'text-teal-400')} Skills</h2>`;
-      html += `<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">`;
-      
-      html += `<div><h3 class="text-xl font-bold mb-2">Technical</h3><ul class="list-disc list-inside space-y-1 text-gray-300">`;
-      skills.technical.forEach(skill => html += `<li>${skill}</li>`);
-      html += `</ul></div>`;
-
-      html += `<div><h3 class="text-xl font-bold mb-2">Analysis</h3><ul class="list-disc list-inside space-y-1 text-gray-300">`;
-      skills.analysis.forEach(skill => html += `<li>${skill}</li>`);
-      html += `</ul></div>`;
-
-      html += `<div><h3 class="text-xl font-bold mb-2">Soft Skills</h3><ul class="list-disc list-inside space-y-1 text-gray-300">`;
-      skills.softSkills.forEach(skill => html += `<li>${skill}</li>`);
-      html += `</ul></div>`;
-
-      html += `</div></section>`;
-      
-      // Call to Action
-      html += `<div class="text-center">`;
-      html += `<button onclick="showModal()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-teal-500 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400 transition-colors duration-200">View Full Resume ${getIconSVG('ExternalLink', 18, 'ml-2')}</button>`;
-      html += `</div>`;
-
-      // Modal
-      html += `<div id="modal-backdrop" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50">`;
-      html += `<div class="bg-gray-800 rounded-lg shadow-xl p-8 max-w-lg w-full">`;
-      html += `<div class="flex justify-between items-center mb-4">`;
-      html += `<h3 class="text-2xl font-bold text-white">Let's Connect</h3>`;
-      html += `<button onclick="hideModal()" class="text-gray-400 hover:text-gray-200">${getIconSVG('X', 24)}</button>`;
-      html += `</div>`;
-      html += `<p class="text-gray-300 mb-4">Please connect with me on LinkedIn to get in touch. You can find my profile link on this page.</p>`;
-      html += `<a href="${personal.linkedin}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">Go to LinkedIn ${getIconSVG('ExternalLink', 18, 'ml-2')}</a>`;
-      html += `</div></div>`;
-      
-      html += `</div></div>`;
-
-      document.getElementById('resume-container').innerHTML = html;
-    }
-    
-    document.addEventListener('DOMContentLoaded', createResumeHTML);
-
-  </script>
+        // Render the resume on page load
+        window.onload = renderResume;
+    </script>
 
 </body>
 </html>
