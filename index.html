@@ -35,7 +35,20 @@
 
   <script type="text/babel">
     const { useState } = React;
-    const { Briefcase, GraduationCap, Code, FileText, ExternalLink, X, Mail, Phone, MapPin, Link, Trash2 } = lucideReact;
+
+    // We can't use object destructuring on the global 'lucideReact' object
+    // with this setup, so we access them directly.
+    const Briefcase = lucideReact.Briefcase;
+    const GraduationCap = lucideReact.GraduationCap;
+    const Code = lucideReact.Code;
+    const FileText = lucideReact.FileText;
+    const ExternalLink = lucideReact.ExternalLink;
+    const X = lucideReact.X;
+    const Mail = lucideReact.Mail;
+    const Phone = lucideReact.Phone;
+    const MapPin = lucideReact.MapPin;
+    const Link = lucideReact.Link;
+    const Trash2 = lucideReact.Trash2;
 
     // Main App component
     function App() {
@@ -269,3 +282,4 @@
 
 </body>
 </html>
+
