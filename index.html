@@ -259,59 +259,59 @@
                 </header>
                 
                 <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- About Me Section - Span 1 Column -->
+                    <!-- About Me Section -->
                     <section id="about-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
                         <h2 class="text-3xl font-bold text-accent-color mb-6">About Me</h2>
                         <p class="text-gray-600 leading-relaxed">${resumeData.personal.summary}</p>
                     </section>
 
-                    <!-- Work Experience Section - Span 1 Column -->
-                    <section id="work-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
-                        <h2 class="text-3xl font-bold text-accent-color mb-6">Work Experience</h2>
-                        <div class="space-y-8">
-                            ${resumeData.workExperience.map((job, index) => `
-                                <div class="pb-6 border-b border-gray-200 last:border-b-0" data-aos="fade-up" data-aos-delay="${index * 100}">
-                                    <div class="flex items-center justify-between">
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-gray-800">${job.role} at ${job.company}</h3>
-                                            <p class="text-gray-500 text-sm mt-1">${job.period} &bull; ${job.location}</p>
-                                        </div>
-                                        <button onclick="toggleDetails(${index})" class="text-accent-color hover:text-gray-800 transition-colors duration-200 focus:outline-none">
-                                            <span class="toggle-icon">${getIconSVG('Plus', 24)}</span>
-                                        </button>
-                                    </div>
-                                    <div id="job-details-${index}" class="work-details">
-                                        <ul class="list-disc list-inside space-y-2 text-gray-600">
-                                            ${job.tasks.map(task => `<li>${task}</li>`).join('')}
-                                        </ul>
-                                        ${job.achievements.length > 0 ? `
-                                            <div class="mt-4">
-                                                <h4 class="font-semibold text-gray-700">Key Achievements:</h4>
-                                                <ul class="space-y-2 mt-2">
-                                                    ${job.achievements.map(achievement => `<li class="achievement">${achievement}</li>`).join('')}
-                                                </ul>
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
+                    <!-- Education Section (now in two-column layout) -->
+                    <section id="education-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
+                        <h2 class="text-3xl font-bold text-accent-color mb-6">Education</h2>
+                        ${resumeData.education.map((edu, index) => `
+                            <div class="mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                                <h3 class="text-xl font-semibold text-gray-800">${edu.institution}</h3>
+                                <p class="text-gray-500">${edu.degree}</p>
+                                <p class="text-sm text-gray-400">${edu.location}</p>
+                            </div>
+                        `).join('')}
                     </section>
                     
                     <!-- Full-width sections below -->
                     <div class="md:col-span-2 space-y-8">
-                        <!-- Education Section -->
-                        <section id="education-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
-                            <h2 class="text-3xl font-bold text-accent-color mb-6">Education</h2>
-                            ${resumeData.education.map((edu, index) => `
-                                <div class="mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-                                    <h3 class="text-xl font-semibold text-gray-800">${edu.institution}</h3>
-                                    <p class="text-gray-500">${edu.degree}</p>
-                                    <p class="text-sm text-gray-400">${edu.location}</p>
-                                </div>
-                            `).join('')}
+                         <!-- Work Experience Section (now full-width) -->
+                        <section id="work-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
+                            <h2 class="text-3xl font-bold text-accent-color mb-6">Work Experience</h2>
+                            <div class="space-y-8">
+                                ${resumeData.workExperience.map((job, index) => `
+                                    <div class="pb-6 border-b border-gray-200 last:border-b-0" data-aos="fade-up" data-aos-delay="${index * 100}">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <h3 class="text-xl font-semibold text-gray-800">${job.role} at ${job.company}</h3>
+                                                <p class="text-gray-500 text-sm mt-1">${job.period} &bull; ${job.location}</p>
+                                            </div>
+                                            <button onclick="toggleDetails(${index})" class="text-accent-color hover:text-gray-800 transition-colors duration-200 focus:outline-none">
+                                                <span class="toggle-icon">${getIconSVG('Plus', 24)}</span>
+                                            </button>
+                                        </div>
+                                        <div id="job-details-${index}" class="work-details">
+                                            <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                                ${job.tasks.map(task => `<li>${task}</li>`).join('')}
+                                            </ul>
+                                            ${job.achievements.length > 0 ? `
+                                                <div class="mt-4">
+                                                    <h4 class="font-semibold text-gray-700">Key Achievements:</h4>
+                                                    <ul class="space-y-2 mt-2">
+                                                        ${job.achievements.map(achievement => `<li class="achievement">${achievement}</li>`).join('')}
+                                                    </ul>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </section>
-                        
+
                         <!-- Skills Section -->
                         <section id="skills-section" class="premium-card" data-aos="fade-up" data-aos-duration="1000">
                             <h2 class="text-3xl font-bold text-accent-color mb-6">Skills</h2>
@@ -408,4 +408,3 @@
     </script>
 </body>
 </html>
-
