@@ -68,56 +68,11 @@
             background-color: rgba(212, 175, 55, 0.05);
             border-radius: 0.25rem;
         }
-        
-        /* Modal for images */
-        .image-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .image-modal.open {
-            display: flex;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .modal-image {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            border-radius: 0.5rem;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            color: #fff;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <div id="resume-container" class="max-w-6xl mx-auto p-6 md:p-12"></div>
-    <div id="image-modal" class="image-modal" onclick="closeModal()">
-        <span class="modal-close">&times;</span>
-        <img id="modal-image-display" class="modal-image" src="" alt="">
-    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -188,21 +143,11 @@
             {
               title: "Battery Assembly Line Optimization",
               description: "Led the design and implementation of optimized jigs and fixtures for Nissan's battery assembly line.",
-              images: [
-                  "uploaded:image_92d5ba.png-29f43233-24ed-43b6-96ac-5359db0da77d",
-                  "uploaded:image_927f26.png-d2370c20-1347-49ae-9ae5-1cd76dcf5729",
-                  "uploaded:image_92ebe5.png-e6a77674-bc06-42b5-adf9-9f9dd9bae16c"
-              ],
               details: "Utilized NX CAD to design ergonomic and efficient fixtures, resulting in a measurable reduction in cycle time and improved operator safety. Collaborated with cross-functional teams to ensure seamless integration into the existing production line."
             },
             {
               title: "Seaweed Harvester Design",
               description: "Conceptualized and designed a complex seaweed harvester with over 900 individual components.",
-              images: [
-                  "uploaded:image_9e54eb.png-7a69aa24-48fc-401f-b0ac-32dcbb7768dc",
-                  "uploaded:image_927bc6.png-9a800989-a8dc-4a32-50236df174e4",
-                  "uploaded:image_92d8c7.png-d43e03a3-a926-4811-a0e1-d4b500b97567"
-              ],
               details: "Employed SolidWorks and Fusion360 for the complete design process, from initial sketches to detailed 3D models and technical drawings. Conducted FEA to validate structural integrity and optimize material usage."
             }
           ]
@@ -221,19 +166,6 @@
                 'Linkedin': `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${className}"><path d="M16 8a6 6 0 0 0-6 6v7H6v-14h4v2.5a4 4 0 0 1 4-2.5c2.2 0 4 1.8 4 4z"></path><path d="M2.9 8.5V21h4V8.5h-4z"></path><circle cx="4.9" cy="4.9" r="2.1"></circle></svg>`,
             };
             return icons[name] || '';
-        }
-
-        // Functions for the image modal
-        function openModal(imageSrc) {
-            const modal = document.getElementById('image-modal');
-            const modalImage = document.getElementById('modal-image-display');
-            modalImage.src = imageSrc;
-            modal.classList.add('open');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('image-modal');
-            modal.classList.remove('open');
         }
 
         function renderResume() {
@@ -342,8 +274,7 @@
                             <h2 class="text-3xl font-bold text-accent-color mb-6">Portfolio</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 ${resumeData.portfolio.map(item => `
-                                    <div class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 hover:border-accent-color transition-colors duration-200 cursor-pointer" onclick="openPortfolioModal('${item.title}', ${JSON.stringify(item.images)})" data-aos="zoom-in-up">
-                                        ${item.images && item.images.length > 0 ? `<img src="${item.images[0]}" alt="Portfolio item image" class="w-full h-48 object-cover">` : ''}
+                                    <div class="bg-gray-100 rounded-lg overflow-hidden border border-gray-200 hover:border-accent-color transition-colors duration-200 cursor-default" data-aos="zoom-in-up">
                                         <div class="p-5">
                                             <h3 class="text-xl font-semibold text-gray-800 mb-2">${item.title}</h3>
                                             <p class="text-gray-500 text-sm mb-3">${item.description}</p>
@@ -369,32 +300,6 @@
             } else {
                 iconElement.innerHTML = getIconSVG('Plus', 24);
             }
-        }
-
-        // Functions for portfolio modal
-        function openPortfolioModal(title, images) {
-            const container = document.getElementById('resume-container');
-            let modalHtml = `
-                <div class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50">
-                    <div class="bg-white p-8 rounded-xl shadow-2xl relative max-w-4xl w-full">
-                        <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition-colors" onclick="closePortfolioModal()">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                        </button>
-                        <h3 class="text-3xl font-bold text-accent-color mb-6">${title}</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            ${images.map(imgSrc => `
-                                <img src="${imgSrc}" class="w-full h-auto object-cover rounded-lg shadow-md">
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-            container.insertAdjacentHTML('beforeend', modalHtml);
-        }
-
-        function closePortfolioModal() {
-            const modal = document.querySelector('.fixed.inset-0.bg-black');
-            if (modal) modal.remove();
         }
 
         window.onload = function() {
